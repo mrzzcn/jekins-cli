@@ -4,7 +4,7 @@
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 12:02:58
+ * @Last Modified time: 2018-08-03 12:06:39
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -16,7 +16,7 @@ const axios = require('axios');
 const chalk = require('chalk');
 
 const packageJson = require('./package.json');
-const { viewBuildInfo } = require('./build');
+const { viewBuildInfo } = require('./build.js');
 
 let commandName = 'jekins';
 let jekinsConfig = null;
