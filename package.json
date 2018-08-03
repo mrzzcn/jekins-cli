@@ -1,6 +1,6 @@
 {
   "name": "jekins-cli",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A jekins command line tool.",
   "main": "index.js",
   "bin": {
