@@ -1,0 +1,8 @@
+url: 'https://jenkins.yourcompany.com'
+env:
+  development: /view/front/dev
+  beta: /view/front/beta
+  production: /view/front/product
+user:
+  name: your-jekins-user-name
+  token: your-jekins-token
