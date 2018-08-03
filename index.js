@@ -4,7 +4,7 @@
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 18:24:39
+ * @Last Modified time: 2018-08-03 18:29:41
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -24,7 +24,7 @@ let jekinsConfigSample;
 let jekins;
 let jekinsUrl;
 
-const installPath = path.dirname(process.argv[1]);
+const installPath = __dirname;
 
 try {
   if (fs.existsSync(getConfigFile())) {
