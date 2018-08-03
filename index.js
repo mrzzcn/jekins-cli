@@ -4,7 +4,7 @@
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 18:07:55
+ * @Last Modified time: 2018-08-03 18:13:41
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -24,10 +24,10 @@ let jekinsConfigSample;
 let jekins;
 let jekinsUrl;
 try {
-  jekinsConfigSample = yaml.safeLoad(fs.readFileSync(path.resolve('./config.yaml'), 'utf8'));
   if (fs.existsSync(getConfigFile())) {
     jekinsConfig = yaml.safeLoad(fs.readFileSync(getConfigFile(), 'utf8'));
   }
+  jekinsConfigSample = yaml.safeLoad(fs.readFileSync(path.join(process.cwd(), './config.yaml'), 'utf8'));
 } catch (e) {
   console.log(chalk.red(e));
 }
@@ -76,7 +76,7 @@ function getEnv(cmd) {
 }
 
 function checkConfigFile() {
-  if(!jekinsConfig) {
+  if (!jekinsConfig) {
     console.log(chalk.red('Config has not been initialized. RUN: '));
     console.log(chalk.green(`${commandName} init`));
     process.exit(1);
