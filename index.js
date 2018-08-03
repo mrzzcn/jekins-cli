@@ -4,7 +4,7 @@
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 18:13:41
+ * @Last Modified time: 2018-08-03 18:24:39
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -23,11 +23,14 @@ let jekinsConfig = null;
 let jekinsConfigSample;
 let jekins;
 let jekinsUrl;
+
+const installPath = path.dirname(process.argv[1]);
+
 try {
   if (fs.existsSync(getConfigFile())) {
     jekinsConfig = yaml.safeLoad(fs.readFileSync(getConfigFile(), 'utf8'));
   }
-  jekinsConfigSample = yaml.safeLoad(fs.readFileSync(path.join(process.cwd(), './config.yaml'), 'utf8'));
+  jekinsConfigSample = yaml.safeLoad(fs.readFileSync(path.join(installPath, './config.yaml'), 'utf8'));
 } catch (e) {
   console.log(chalk.red(e));
 }
