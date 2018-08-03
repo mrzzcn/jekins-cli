@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 /*
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 11:48:38
+ * @Last Modified time: 2018-08-03 12:02:58
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
