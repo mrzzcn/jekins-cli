@@ -23,9 +23,9 @@
     "url": "https://github.com/mrzzcn/jekins-cli/issues"
   },
   "files": [
-    "./build.js",
-    "./index.js",
-    "./config.yaml"
+    "build.js",
+    "index.js",
+    "config.yaml"
   ],
   "homepage": "https://github.com/mrzzcn/jekins-cli#readme",
   "dependencies": {
