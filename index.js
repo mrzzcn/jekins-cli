@@ -4,7 +4,7 @@
  * @Author: Jack
  * @Date:   2018-08-01 14:25:34
  * @Last Modified by: Taco
- * @Last Modified time: 2018-08-03 12:06:39
+ * @Last Modified time: 2018-08-03 14:41:33
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
@@ -107,7 +107,7 @@ program
           const { lastBuild } = response.data;
           buildId = lastBuild.number;
           const buildUrl = lastBuild.url.replace(/^https?:\/\//, `https://${jekinsConfig.user.name}:${jekinsConfig.user.token}@`);
-          console.log('Building Started: ', buildUrl);
+          console.log('Build Info: ', buildUrl);
           viewBuildInfo(buildUrl);
         });
 

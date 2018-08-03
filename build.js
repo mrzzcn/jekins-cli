@@ -1,13 +1,15 @@
 const axios = require('axios');
 const console = require('better-console');
+const ora = require('ora');
 
 let previousLog = '';
+
+let spinner;
 
 exports.viewBuildInfo = function(url) {
   const buildApi = `${url}api/json`;
 
   axios.get(buildApi).then(function(response) {
-    console.log(response.data);
     const causeAction = response.data.actions.find(function(action) {
       return action._class === 'hudson.model.CauseAction';
     });
@@ -17,12 +19,22 @@ exports.viewBuildInfo = function(url) {
       return action._class === 'hudson.plugins.git.util.BuildData';
     });
     if (!buildData) {
+      if (!spinner) {
+        spinner = ora('Waiting...').start();
+        spinner.color = 'yellow';
+      }
       return exports.viewBuildInfo(url);
+    }
+    if (spinner.isSpinning) {
+      spinner.color = 'green';
+      spinner.stopAndPersist();
+      spinner.clear();
+      spinner.succeed('Started');
+      spinner = null;
     }
     const { lastBuiltRevision, remoteUrls } = buildData;
 
     const buildingInfo = `${user.userName}: ${remoteUrls}[${lastBuiltRevision.branch[0].name}](${lastBuiltRevision.branch[0].SHA1})`;
-    console.log('\n');
     viewBuildConsole(url);
   })
 }
@@ -33,7 +45,7 @@ function viewBuildConsole(url) {
     .then(function(response) {
       if (response.data.indexOf('Finished:') > 0) {
         console.clear();
-        console.log(response.data);
+        console.log(response.data.replace(previousLog, ''));
       } else {
         const newLog = response.data.replace(previousLog, '');
         if (newLog) {
