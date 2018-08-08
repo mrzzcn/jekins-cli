@@ -4,10 +4,10 @@ const ora = require('ora');
 
 let previousLog = '';
 
-let spinner;
 
 exports.viewBuildInfo = function(url) {
   const buildApi = `${url}api/json`;
+  let spinner;
 
   axios.get(buildApi).then(function(response) {
     const causeAction = response.data.actions.find(function(action) {
@@ -25,7 +25,7 @@ exports.viewBuildInfo = function(url) {
       }
       return exports.viewBuildInfo(url);
     }
-    if (spinner.isSpinning) {
+    if (spinner && spinner.isSpinning) {
       spinner.color = 'green';
       spinner.stopAndPersist();
       spinner.clear();
